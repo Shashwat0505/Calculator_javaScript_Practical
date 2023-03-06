@@ -4,7 +4,7 @@
 
 -Calculator can take keyboard input as well as on click input.
 
-![image](calculator.png)
+![image](calculator.png).
 
 
 
