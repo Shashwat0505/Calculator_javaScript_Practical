@@ -22,6 +22,7 @@ const exp=document.querySelector('.exp-button');
 const squareButton=document.querySelector('.square-button');
 const tenButton=document.querySelector('.ten-button');
 
+
 // Event Listeners
 numbers.forEach(number=>{
     number.addEventListener('click',()=>{
@@ -165,9 +166,7 @@ document.addEventListener('keydown',(event)=>{
 
 function appendNumber(number){
 
-    
     document.querySelector('.current-operand').innerText+=number;
-    
 }
 
 function clearDisplay(){
@@ -182,16 +181,26 @@ function deleteNumber(){
 }
 
 function updateDisplay(operation){
+
+    let str1=document.querySelector('.current-operand').innerText;
+    if((str1.endsWith("+")||str1.endsWith("-")||str1.endsWith("/")||str1.endsWith("*")||str1.endsWith(".")||str1.endsWith("%"))&&((operation=="+")||(operation=="-")||(operation=="/")||(operation=="*")||(operation==".")||(operation=="%"))){
+        return;
+    }
+    else{
    
     document.querySelector('.current-operand').innerText+=operation;
-
+    }
 }
 
 function evaluateExpression(){
     let str=document.querySelector('.current-operand').innerText;
+    if((str.charAt(str.length-2)=="/")&&(str.charAt(str.length-1)=="0")){
+        document.querySelector('.current-operand').innerText="undefined";
+    }
+    else{
     let ans=eval(str);
     document.querySelector('.current-operand').innerText=ans;
-     
+    }
 }
 
 function restTocalculation(){
